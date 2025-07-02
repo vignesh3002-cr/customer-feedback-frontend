@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
 const BACKEND_URL = "https://customer-feedback-backend.onrender.com";
 
-=======
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./App.css";
-
->>>>>>> 7fbd18ad40652a54649a8193c01fad31e2f19aed
 export default function App() {
   const [form, setForm] = useState({
     name: "",
@@ -31,7 +24,6 @@ export default function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
     try {
       await axios.post(`${BACKEND_URL}/submit-feedback`, form);
       alert("Feedback submitted!");
@@ -39,27 +31,15 @@ export default function App() {
     } catch (err) {
       alert("Submission failed. Please try again.");
     }
-=======
-    await axios.post("/api/submit-feedback", form);
-    alert("Feedback submitted!");
-    setForm({ name: "", email: "", service: "", rating: 5, comments: "" });
->>>>>>> 7fbd18ad40652a54649a8193c01fad31e2f19aed
   };
 
   const handleAdminLogin = async (e) => {
     e.preventDefault();
     try {
-<<<<<<< HEAD
       const res = await axios.post(`${BACKEND_URL}/admin-login`, adminForm);
       if (res.data.success) {
         setIsAdmin(true);
         const feedbackRes = await axios.get(`${BACKEND_URL}/all-feedback`);
-=======
-      const res = await axios.post("/api/admin-login", adminForm);
-      if (res.data.success) {
-        setIsAdmin(true);
-        const feedbackRes = await axios.get("/api/all-feedback");
->>>>>>> 7fbd18ad40652a54649a8193c01fad31e2f19aed
         setFeedbacks(feedbackRes.data);
       } else {
         alert("Invalid admin credentials");
@@ -127,4 +107,4 @@ export default function App() {
       )}
     </div>
   );
-} 
+}
