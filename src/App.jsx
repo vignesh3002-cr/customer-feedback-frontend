@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-const BACKEND_URL = "https://customer-feedback-backend.onrender.com";
+const BACKEND_URL = "https://customer-feedback-backend-ozgw.onrender.com";
 
 export default function App() {
   const [form, setForm] = useState({
