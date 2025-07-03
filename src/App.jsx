@@ -16,6 +16,7 @@ export default function App() {
   const [feedbacks, setFeedbacks] = useState([]);
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isSubmit, setSubmit]= useState(true);
   const [adminForm, setAdminForm] = useState({ username: "", password: "" });
 
   const handleChange = (e) => {
@@ -25,8 +26,10 @@ export default function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setSubmit(false);
       await axios.post(`${BACKEND_URL}/submit-feedback`, form);
       alert("Feedback submitted!");
+      setSubmit(true);
       setForm({ name: "", email: "", service: "", rating: "", comments: "" });
     } catch (err) {
       alert("Submission failed. Please try again.");
@@ -67,7 +70,7 @@ export default function App() {
         </select>
         <input type="number" name="rating" min="1" max="5" value={form.rating} placeholder="Drop your ratings out of 5" onChange={handleChange} required />
         <textarea name="comments" value={form.comments} onChange={handleChange} placeholder="Comments" />
-        <button type="submit">Submit Feedback</button>
+       {isSubmit && (<button type="submit">Submit Feedback</button>)}
       </form>
       <img src="../danger.webp" id="danger"></img>
       <button id="adlog" onClick={() => setShowAdminLogin(!showAdminLogin)} style={{ marginTop: "20px" }}>
