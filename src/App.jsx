@@ -9,7 +9,7 @@ export default function App() {
     name: "",
     email: "",
     service: "",
-    rating: 5,
+    rating: "",
     comments: ""
   });
 
@@ -27,7 +27,7 @@ export default function App() {
     try {
       await axios.post(`${BACKEND_URL}/submit-feedback`, form);
       alert("Feedback submitted!");
-      setForm({ name: "", email: "", service: "", rating: 5, comments: "" });
+      setForm({ name: "", email: "", service: "", rating: "", comments: "" });
     } catch (err) {
       alert("Submission failed. Please try again.");
     }
@@ -65,7 +65,7 @@ export default function App() {
           <option>Digital Marketing</option>
           <option>Cybersecurity</option>
         </select>
-        <input type="number" name="rating" min="1" max="5" value={form.rating} onChange={handleChange} required />
+        <input type="number" name="rating" min="1" max="5" value={form.rating} placeholder="Drop your ratings out of 5" onChange={handleChange} required />
         <textarea name="comments" value={form.comments} onChange={handleChange} placeholder="Comments" />
         <button type="submit">Submit Feedback</button>
       </form>
