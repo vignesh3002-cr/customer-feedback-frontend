@@ -50,6 +50,8 @@ export default function App() {
   };
 
   return (
+   <div id="head_container">
+    <h1 id="heading">Pixellium</h1>
     <div className="container">
       <h1>Customer Feedback</h1>
 
@@ -67,13 +69,15 @@ export default function App() {
         <textarea name="comments" value={form.comments} onChange={handleChange} placeholder="Comments" />
         <button type="submit">Submit Feedback</button>
       </form>
-
-      <button onClick={() => setShowAdminLogin(!showAdminLogin)} style={{ marginTop: "20px" }}>
-        {showAdminLogin ? "Hide Admin Login" : "Admin View"}
+      <img src="../danger.webp" id="danger"></img>
+      <button id="adlog" onClick={() => setShowAdminLogin(!showAdminLogin)} style={{ marginTop: "20px" }}>
+       {showAdminLogin ? "Hide Admin Login" : " For Admin Use Only"}
       </button>
+      <img src="../arrow.gif" id="arrow"></img>
+      
 
       {showAdminLogin && !isAdmin && (
-        <form onSubmit={handleAdminLogin} style={{ marginTop: "15px" }}>
+        <form onSubmit={handleAdminLogin} style={{ marginTop: "5px" }}>
           <input
             name="username"
             placeholder="Admin Username"
@@ -93,7 +97,7 @@ export default function App() {
         </form>
       )}
 
-      {isAdmin && (
+      {isAdmin && showAdminLogin && (
         <div>
           <h2>All Feedback</h2>
           <ul>
@@ -105,6 +109,7 @@ export default function App() {
           </ul>
         </div>
       )}
+    </div>
     </div>
   );
 }

@@ -91,9 +91,27 @@ strong {
 }
 #head_container h1{
   padding: 10px;
-  margin-left: 5px;
+  
 }
-
+#head_container{
+  position: relative;
+}
+#arrow{
+  position: relative;
+  top: 5px;
+  width: 20px;
+}
+#adlog{
+  color: rgb(255, 187, 0);
+  background: transparent;
+}
+#danger{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 3px;
+  left: 2px;
+}
 /* Responsive design */
 @media (max-width: 600px) {
   .container {
